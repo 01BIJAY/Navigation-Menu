@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation-Menu - by CodingSanchar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="#"><box-icon name="home-heart"></box-icon><text>Home</text></a>
+      </li>
+      <li>
+        <a href="#"><box-icon name="user"></box-icon><text>Account</text></a>
+      </li>
+      <li class="active">
+        <a href="#"
+          ><box-icon name="plus-medical"></box-icon><text>Create</text></a
+        >
+      </li>
+      <li>
+        <a href="#"><box-icon name="cog"></box-icon><text>Setting</text></a>
+      </li>
+      <li>
+        <a href="#"><box-icon name="chat"></box-icon><text>Chat</text></a>
+      </li>
+      <div id="marker"><span></span></div>
+    </ul>
+
+    <script>
+      let marker = document.querySelector("#marker");
+      let list = document.querySelectorAll("ul li");
+
+      function moveIndicator(e) {
+        marker.style.left = e.offsetLeft + "px";
+        marker.style.width = e.offsetWidth + "px";
+      }
+      list.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          moveIndicator(e.target);
+        });
+      });
+
+      //add active class in selected list item
+
+      function activeLink() {
+        list.forEach((item) => item.classList.remove("active"));
+        this.classList.add("active");
+      }
+      list.forEach((item) => item.addEventListener("click", activeLink));
+    </script>
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
+</html>
